@@ -9,6 +9,15 @@ body {
     color: #7E7E82;
     background-color: #F8F8F8;
 }
+.brands__arrow {
+    transition: transform 0.3s ease;
+}
+.brands__toggle--open .brands__arrow {
+    transform: rotate(180deg);
+}
+.brands__toggle {
+    display: none;
+}
 
 @font-face {
     font-family: 'TTLakes-ExtraLight';
@@ -50,7 +59,7 @@ body {
 }
 
 .swiper-slide {
-    width: 260px;
+    width: 240px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -69,7 +78,7 @@ body {
     border-radius: 6px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .swiper::after {
     position: absolute;
     content: '';
@@ -84,15 +93,67 @@ body {
     );
     pointer-events: none;
     z-index: 5;
+    }
 }
-}
-@media (min-width: 769px) {
+@media (min-width: 768px) and (max-width: 1119px) {
     .swiper {
-        height: 180px;
+        height: auto;
+        padding: 16px;
     }
     .swiper-wrapper {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        
+        grid-template-columns: repeat(3, 230px);
+        gap: 12px;
+    }
+    .swiper-slide:nth-child(n+7) {
+        display: none;
+    }
+    .swiper-wrapper--open .swiper-slide:nth-child(n+7) {
+        display: flex;
+    }
+    .brands__toggle {
+        display: flex;
+        background: none;
+        border: none;
+        font-family: TTLakes-Medium;
+        font-size: 16px;
+        line-height: 24px;
+        width: 134px;
+        height: 24px;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 36px;
+        gap: 15px;
+    }
+}
+
+@media (min-width: 1120px) {
+    .swiper {
+        height: auto;
+        padding: 16px;
+    }
+    .swiper-wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 260px);
+    }
+    .swiper-slide:nth-child(n+9) {
+        display: none;
+    }
+    .swiper-wrapper--open .swiper-slide:nth-child(n+9) {
+        display: flex;
+    }
+    .brands__toggle {
+        display: flex;
+        background: none;
+        border: none;
+        font-family: TTLakes-Medium;
+        font-size: 16px;
+        line-height: 24px;
+        width: 134px;
+        height: 24px;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 36px;
+        gap: 15px;
     }
 }
