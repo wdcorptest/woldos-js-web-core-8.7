@@ -1,17 +1,24 @@
-const isMobile = window.matchMedia('(width < 768px)').matches;
+const breakpoint = window.matchMedia('(min-width: 768px)');
+let swiper = null;
 
-if (isMobile) {
-    const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    loop: true,
-    slidesPerView: 'auto',
-    pagination: {
-        el: '.swiper-pagination',
-        enabled: true,
-    },
-    });
-}
+const breakpointChecker = () => {
+    if (breakpoint.matches) {
+        swiper?.destroy();
+        swiper = null;
+    } else {
+        swiper = new Swiper('.swiper', {
+            direction: 'horizontal',
+            loop: true,
+            slidesPerView: 'auto',
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    }
+};
 
+breakpoint.addEventListener('change', breakpointChecker);
+breakpointChecker();
 
 const button = document.querySelector('.brands__toggle');
 const wrapper = document.querySelector('.swiper-wrapper');
